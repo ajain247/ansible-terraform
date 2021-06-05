@@ -1,4 +1,4 @@
-@Library('jenkins_shared_library')
-test{
+library('jenkins_shared_library')
+test(
     name="test"
-}
+)
