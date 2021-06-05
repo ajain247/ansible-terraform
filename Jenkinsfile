@@ -1,4 +1,4 @@
 library 'jenkins_shared_library'
-test(
+test{
     name="test"
-)
+}
