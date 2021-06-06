@@ -1,5 +1,8 @@
 ---
 - name: Terraform
   terraform: 
-    project_path: '{{ project_dir }}'
+    project_path: ./terraform-config
+    plan_file: ./plan
     state: present
+    variables:
+    variables_file:
