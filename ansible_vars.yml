@@ -3,6 +3,6 @@ plan_path: "{{ lookup('env','plan_path') }}"
 state: "{{ lookup('env','state') }}"
 variables:
 path_variable_file:
-backend_region:
-backend_s3_bucket:
-backend_s3_key:
+backend_region: us-east-1
+backend_s3_bucket: bucke-terraform-aj
+backend_s3_key: project/terraform.tfstate
