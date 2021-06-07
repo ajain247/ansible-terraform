@@ -2,16 +2,18 @@
 - name: Run terraform
   hosts: localhost
   connection: local
+  vars_files:
+  - ./ansible_vars.yml
   tasks:
           
   - terraform: 
-      project_path: ./terraform-config
-      plan_file: ./plan
-      state: present
+      project_path: "{{ terraform_project }}"
+      plan_file: "{{ plan_path }}"
+      state: "{{ state }}"
       force_init: true
-      variables:
-      variables_file:
+      variables: "{{ variables }}"
+      variables_file: "{{ path_variable_file}}"
       backend_config:
-        region: "us-east-1"
-        bucket: "bucket-terraform-state-aj"
-        key: "project/terraform.tfstate"
+        region: "{{ backend_region  }}"
+        bucket: "{{ backend_s3_bucket }}"
+        key: "{{ backend_s3_key }}"
