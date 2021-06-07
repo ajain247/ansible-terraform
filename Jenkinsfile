@@ -19,13 +19,13 @@
                  script{    
                      sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml --check
+                     //ansible-playbook terraform-play.yml --check
                      '''
-
+                     input(id: 'Approve', message: "Do you want to apply the plan")
                  }
              }
          }
-         stage('Deploy') {
+         stage('terraform-apply') {
              steps {
                  echo 'Deploying....'
              }
