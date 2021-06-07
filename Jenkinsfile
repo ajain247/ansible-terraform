@@ -28,10 +28,10 @@
              steps {
                  
                  script{
-                     
+                     env.plan_path=""
                   sh'''
                      cd ${WORKSPACE}
-                     #ansible-playbook terraform-play.yml --check
+                     ansible-playbook terraform-play.yml --check
                      '''
                      
                  }
@@ -54,7 +54,7 @@
              steps{
                  sh'''
                      cd ${WORKSPACE}
-                     #ansible-playbook terraform-play.yml
+                     ansible-playbook terraform-play.yml
                      '''
               
             }
@@ -69,8 +69,9 @@
                   env.plan_path=params.plan_path
                   echo "${env.plan_path}"
                   sh'''
-                      echo "executed plan"
-                  '''
+                     cd ${WORKSPACE}
+                     ansible-playbook terraform-play.yml
+                     '''
              }
         
             }
