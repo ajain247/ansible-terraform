@@ -8,7 +8,7 @@
      }
     
         parameters{
-            choice(choices: ['Plan', 'Plan_and_Apply', 'Apply_Plan'], name: 'Type_of_execution')
+            choice(choices: ['Plan_and_Apply', 'Apply_Plan'], name: 'Type_of_execution')
         }
     
      stages {
@@ -20,7 +20,11 @@
              }
          }
          stage('terraform-plan') {
+             when{
+                 expression { ${Type_of_execution}=="Plan_and_Apply"}
+             }
              steps {
+                 
                  script{
                      
                   sh'''
@@ -33,12 +37,18 @@
          }
 
          stage('Approval') {
+             when{
+                 expression { ${Type_of_execution}=="Plan_and_Apply"}
+             }
              steps {
                  input(id: 'Approve', message: "Do you want to apply the plan")
              }
          }
 
          stage('terraform plan & apply'){
+             when{
+                 expression { ${Type_of_execution}=="Plan_and_Apply"}
+             }
              steps{
                  sh'''
                      cd ${WORKSPACE}
@@ -49,6 +59,9 @@
          }
       
         stage('Execute a plan'){
+            when{
+                 expression { ${Type_of_execution}=="Apply_Plan"}
+             }
             steps{
                 sh'''
                     echo "executed plan"
