@@ -1,5 +1,5 @@
 terraform_project: ./terraform-config 
-plan_path: {{ lookup('env','plan_path') }}
+plan_path: "{{ lookup('env','plan_path') }}"
 state: present
 variables:
 path_variable_file:
