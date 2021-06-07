@@ -1,4 +1,5 @@
 
+
  pipeline {
 
      agent {
@@ -9,6 +10,7 @@
     
         parameters{
             choice(choices: ['Plan_and_Apply', 'Apply_Plan'], name: 'Type_of_execution')
+            string(defaultValue: './plan', description: 'Please include the plan file relative path from the terraform-config folder. recommended file name "plan"', name: 'plan_path')
         }
     
      stages {
@@ -63,6 +65,8 @@
                  expression { params.Type_of_execution=="Apply_Plan"}
              }
             steps{
+                env.plan_path=params.plan_path
+                echo "${env.plan_path}"
                 sh'''
                     echo "executed plan"
                 '''
