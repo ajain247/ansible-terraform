@@ -47,7 +47,7 @@
       
         stage('Execute a plan'){
             when{
-                environment name: 'Type_of_execution' choice: 'Apply_Plan'}
+                environment name: 'Type_of_execution' value: 'Apply_Plan'}
             }
             steps{
                 sh'''
