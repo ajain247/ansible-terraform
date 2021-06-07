@@ -3,9 +3,9 @@ test{
     terraform_project="./terraform-config"
     plan_path="./plan"
     state="present"
-    variables=
-    path_variable_file=
-    backend_region=
-    backend_s3_bucket=
-    backend_s3_key=
+    variables=null
+    path_variable_file=null
+    backend_region=null
+    backend_s3_bucket=null
+    backend_s3_key=null
 }
