@@ -46,9 +46,7 @@
          }
       
         stage('Execute a plan'){
-            when{
-                environment name: 'Type_of_execution' value: 'Apply_Plan'}
-            }
+            
             steps{
                 sh'''
                     echo "executed plan"
