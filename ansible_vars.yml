@@ -1,7 +1,7 @@
 terraform_project : "{{ lookup('env','terraform_project') }}"
 plan_path : "{{ lookup('env','plan_path') }}"
 state : "{{ lookup('env','state') }}"
-variables : "{{ lookup('env','variables') | default() }}"
+variables : "{{ lookup('env','variables') | default({'null':'null'}) }}"
 path_variable_file : "{{ lookup('env','path_variable_file') | default() }}"
 backend_region : "{{ lookup('env','backend_region')| default() }}"
 backend_s3_bucket : "{{ lookup('env','backend_s3_bucket') | default() }}"
