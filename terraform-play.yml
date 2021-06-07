@@ -1,8 +1,17 @@
 ---
-- name: Terraform
-  terraform: 
-    project_path: ./terraform-config
-    plan_file: ./plan
-    state: present
-    variables:
-    variables_file:
+- name: Run terraform
+  hosts: localhost
+  connection: local
+  tasks:
+          
+  - terraform: 
+      project_path: ./terraform-config
+      plan_file: ./plan
+      state: present
+      force_init: true
+      variables:
+      variables_file:
+      backend_config:
+        region: "us-east-1"
+        bucket: "bucket-terraform-state-aj"
+        key: "project/terraform.tfstate"
