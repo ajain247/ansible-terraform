@@ -7,7 +7,7 @@
   tasks:
           
   - terraform: 
-      project_path: "{{ lookup('env','project_path') }}"
+      project_path: "{{ lookup('param','terraform_project') }}"
       plan_file: "{{ plan_path }}"
       state: "{{ state }}"
       force_init: true
