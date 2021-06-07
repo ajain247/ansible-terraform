@@ -46,7 +46,7 @@
        steps{
          sh'''
              echo "executed plan"
-         ''''
+         '''
         
        }
        
