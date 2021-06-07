@@ -65,11 +65,13 @@
                  expression { params.Type_of_execution=="Apply_Plan"}
              }
             steps{
-                env.plan_path=params.plan_path
-                echo "${env.plan_path}"
-                sh'''
-                    echo "executed plan"
-                '''
+             script{
+                  env.plan_path=params.plan_path
+                  echo "${env.plan_path}"
+                  sh'''
+                      echo "executed plan"
+                  '''
+             }
         
             }
        
