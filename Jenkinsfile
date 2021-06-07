@@ -14,12 +14,12 @@
                  checkout scm
              }
          }
-         stage('ansible-test') {
+         stage('terraform-plan') {
              steps {
                  script{    
                      sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml -vvvv
+                     ansible-playbook terraform-play.yml --check
                      '''
 
                  }
