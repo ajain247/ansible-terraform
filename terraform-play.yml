@@ -11,9 +11,9 @@
       plan_file: "{{ plan_path }}"
       state: "{{ state }}"
       force_init: true
-      variables: {{ variables }}
-      variables_file: {{ path_variable_file}}
+      variables: "{{ variables }}"
+      variables_file: "{{ path_variable_file}}"
       backend_config:
-        region: {{ backend_region  }}
-        bucket: {{ backend_s3_bucket }}
-        key: {{ backend_s3_key }}
+        region: "{{ backend_region  }}"
+        bucket: "{{ backend_s3_bucket }}"
+        key: "{{ backend_s3_key }}"
