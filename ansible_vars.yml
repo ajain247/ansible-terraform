@@ -1,6 +1,6 @@
 terraform_project: ./terraform-config 
 plan_path: "{{ lookup('env','plan_path') }}"
-state: present
+state: "{{ lookup('env','state') }}"
 variables:
 path_variable_file:
 backend_region:
