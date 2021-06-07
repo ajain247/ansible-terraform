@@ -1,5 +1,4 @@
 
- 
  pipeline {
 
      agent {
@@ -7,7 +6,11 @@
              label 'master'
          }
      }
-    options([parameters([choice(choices: ['Plan', 'Plan_and_Apply', 'Apply_Plan'], name: 'Type_of_execution')])])
+    
+        parameters{
+            choice(choices: ['Plan', 'Plan_and_Apply', 'Apply_Plan'], name: 'Type_of_execution')
+        }
+    
      stages {
 
          stage('Checkout') {
@@ -46,7 +49,9 @@
          }
       
         stage('Execute a plan'){
-            
+            when{
+                environment name: 'Type_of_execution' choice: 'Apply_Plan'}
+            }
             steps{
                 sh'''
                     echo "executed plan"
