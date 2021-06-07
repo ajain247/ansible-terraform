@@ -16,19 +16,41 @@
          }
          stage('terraform-plan') {
              steps {
-                 script{    
-                     sh'''
+                 script{
+                     
+                  sh'''
                      cd ${WORKSPACE}
                      #ansible-playbook terraform-play.yml --check
                      '''
-                     input(id: 'Approve', message: "Do you want to apply the plan")
+                     
                  }
              }
          }
-         stage('terraform-apply') {
+         stage('Approval') {
              steps {
-                 echo 'Deploying....'
+                 input(id: 'Approve', message: "Do you want to apply the plan")
              }
          }
+         stage('terraform plan & apply'){
+             steps{
+                 sh'''
+                     cd ${WORKSPACE}
+                     #ansible-playbook terraform-play.yml
+                     '''
+              
+             }
+       
+         }
+      
+      stage('execute a plan'){
+       steps{
+         sh'''
+             echo "executed plan"
+         ''''
+        
+       }
+       
+      }
+      
      }
  }
