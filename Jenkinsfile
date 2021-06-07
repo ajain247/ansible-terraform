@@ -28,10 +28,11 @@
              steps {
                  
                  script{
+                     env.state="planned"
                      env.plan_path=""
                   sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml --check
+                     ansible-playbook terraform-play.yml
                      '''
                      
                  }
@@ -52,10 +53,13 @@
                  expression { params.Type_of_execution=="Plan_and_Apply"}
              }
              steps{
+              script{
+                 env.state="present"
                  sh'''
                      cd ${WORKSPACE}
                      ansible-playbook terraform-play.yml
                      '''
+              }
               
             }
          }
@@ -67,6 +71,7 @@
             steps{
              script{
                   env.plan_path=params.plan_path
+                  env.state="present"
                   echo "${env.plan_path}"
                   sh'''
                      cd ${WORKSPACE}
