@@ -32,7 +32,7 @@
                      env.plan_path=""
                   sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml
+                     ansible-playbook terraform-play.yml -vvv
                      '''
                      
                  }
@@ -57,7 +57,7 @@
                  env.state="present"
                  sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml
+                     ansible-playbook terraform-play.yml -vvv
                      '''
               }
               
@@ -75,7 +75,7 @@
                   echo "${env.plan_path}"
                   sh'''
                      cd ${WORKSPACE}
-                     ansible-playbook terraform-play.yml
+                     ansible-playbook terraform-play.yml -vvv
                      '''
              }
         
