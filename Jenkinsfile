@@ -21,7 +21,7 @@
          }
          stage('terraform-plan') {
              when{
-                 expression { ${Type_of_execution}=="Plan_and_Apply"}
+                 expression { params.Type_of_execution=="Plan_and_Apply"}
              }
              steps {
                  
@@ -38,7 +38,7 @@
 
          stage('Approval') {
              when{
-                 expression { "${Type_of_execution}"=="Plan_and_Apply"}
+                 expression { params.Type_of_execution=="Plan_and_Apply"}
              }
              steps {
                  input(id: 'Approve', message: "Do you want to apply the plan")
@@ -47,7 +47,7 @@
 
          stage('terraform plan & apply'){
              when{
-                 expression { "${Type_of_execution}"=="Plan_and_Apply"}
+                 expression { params.Type_of_execution=="Plan_and_Apply"}
              }
              steps{
                  sh'''
@@ -60,7 +60,7 @@
       
         stage('Execute a plan'){
             when{
-                 expression { "${Type_of_execution}"=="Apply_Plan"}
+                 expression { params.Type_of_execution=="Apply_Plan"}
              }
             steps{
                 sh'''
