@@ -18,3 +18,17 @@ variable "region" {
   default = "us-east-1"
 }
 
+variable "bucketName"{
+  type    = string
+  default = "my-bucket-aj6055"
+}
+
+variable "bucketNameTag"{
+  type    = string
+  default = "StaticFiles"
+}
+
+variable "environmentTag"{
+  type    = string
+  default = "Dev"
+}
