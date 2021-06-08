@@ -20,7 +20,7 @@ variable "region" {
 
 variable "bucketName"{
   type    = string
-  default = "my-bucket-aj6055"
+  default = "my-bucket-aj60551"
 }
 
 variable "bucketNameTag"{
